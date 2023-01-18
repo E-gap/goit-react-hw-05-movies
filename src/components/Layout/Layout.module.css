@@ -1,0 +1,16 @@
+.list {
+  list-style: none;
+  display: flex;
+}
+
+.item {
+  margin-right: 20px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.active {
+  color: aqua;
+}
