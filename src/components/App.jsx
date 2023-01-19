@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import Home from './Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
+import Movies from './Movies/Movies';
+import MovieDetails from './MovieDetails/MovieDetails';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -10,11 +14,11 @@ export const App = () => {
 
   useEffect(() => {
     if (movies.length === 0) {
-      search();
+      searchMovies();
     }
   }, [movies]);
 
-  const search = () => {
+  const searchMovies = () => {
     fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
       .then(resp => resp.json())
       .then(resp => {
@@ -38,6 +42,11 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home movies={movies} />}></Route>
+          <Route path="movies" element={<Movies />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews />}></Route>
+          </Route>
         </Route>
       </Routes>
     </div>

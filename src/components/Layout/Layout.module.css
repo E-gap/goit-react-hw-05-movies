@@ -11,6 +11,11 @@
   text-decoration: none;
 }
 
-.active {
-  color: aqua;
+.link.active {
+  color: red;
+  font-size: 200px;
+}
+
+[aria-current] {
+  color: red;
 }

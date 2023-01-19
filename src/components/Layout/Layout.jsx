@@ -1,18 +1,20 @@
 import css from './Layout.module.css';
-import { Outlet, NavLink, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 const Layout = () => {
   return (
+    //const ааа = 'active' ? 'css.link css.active' : 'css.link';
+
     <div>
       <ul className={css.list}>
         <li className={css.item}>
-          <Link to="/" className={css.link}>
+          <NavLink to="/" className={css.link}>
             Home
-          </Link>
+          </NavLink>
         </li>
         <li className={css.item}>
-          <Link to="dfdfdfdf" className={css.link}>
+          <NavLink to="movies" className={css.link}>
             Movies
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <Outlet />
