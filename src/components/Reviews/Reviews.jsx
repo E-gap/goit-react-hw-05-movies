@@ -1,27 +1,25 @@
 import { useState, useEffect } from 'react';
 import css from './Reviews.module.css';
 import { useParams } from 'react-router-dom';
+import { key } from '../../services/data';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
 
-  useEffect(() => {
-    searchMovieReviews();
-  }, []);
-
   const searchMovieReviews = () => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=1b60c1098299c5cc97f7c1027b35f488&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${key}&language=en-US&page=1`
     )
       .then(resp => resp.json())
-      .then(resp => {
-        return resp;
-      })
       .then(resp => {
         setReviews(resp.results);
       });
   };
+
+  useEffect(() => {
+    searchMovieReviews();
+  }, []);
 
   return (
     <div>

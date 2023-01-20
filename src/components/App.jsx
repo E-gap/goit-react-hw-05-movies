@@ -1,33 +1,39 @@
-import { useState, useEffect } from 'react';
-import Home from './Home/Home';
+import { useState, useEffect, lazy } from 'react';
+import Home from '../pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout';
-import Movies from './Movies/Movies';
-import MovieDetails from './MovieDetails/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+import Movies from '../pages/Movies/Movies';
+import { key } from '../services/data';
+
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
 
-  const key = '1b60c1098299c5cc97f7c1027b35f488';
+  const searchTrendingMovies = () => {
+    try {
+      fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(Response.status);
+          }
+          return response.json();
+        })
+        .then(resp => {
+          setMovies(resp.results);
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
     if (movies.length === 0) {
-      searchMovies();
+      searchTrendingMovies();
     }
   }, [movies]);
-
-  const searchMovies = () => {
-    fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
-      .then(resp => resp.json())
-      .then(resp => {
-        return resp;
-      })
-      .then(resp => {
-        setMovies(resp.results);
-      });
-  };
 
   return (
     <div
@@ -48,6 +54,7 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
         </Route>
+        <Route path="*" element={<Home movies={movies} />} />
       </Routes>
     </div>
   );

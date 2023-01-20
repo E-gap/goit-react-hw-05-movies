@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import css from './Cast.module.css';
 import { BsFillCircleFill } from 'react-icons/bs';
-
 import { useParams } from 'react-router-dom';
+import { key } from '../../services/data';
 
 const Cast = () => {
   const [credits, setCredits] = useState([]);
@@ -12,20 +12,19 @@ const Cast = () => {
     searchMovieCredits();
   }, []);
 
-  const searchMovieCredits = () => {
+  const searchMovieCredits = id => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=1b60c1098299c5cc97f7c1027b35f488&language=en-US`
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`
     )
       .then(resp => resp.json())
-      .then(resp => {
-        return resp;
-      })
       .then(resp => {
         setCredits(resp.cast);
       });
   };
 
   const basic = 'https://image.tmdb.org/t/p/w500';
+  const noPosterImg =
+    'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
 
   return (
     <div>
@@ -33,9 +32,13 @@ const Cast = () => {
         {credits.map(credit => (
           <li key={credit.id}>
             <img
-              src={`${basic}${credit.profile_path}`}
+              src={
+                credit.profile_path
+                  ? `${basic}${credit.profile_path}`
+                  : noPosterImg
+              }
               className={css.profile}
-              alt="photo cast"
+              alt="actor face"
             />
             <p className={`${css.text} ${css.displayFlex}`}>
               <BsFillCircleFill
