@@ -10,9 +10,9 @@ const MoviesDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
 
-  useEffect(() => {
+  /* useEffect(() => {
     searchMovieDetails();
-  }, []);
+  }, []); */
 
   const searchMovieDetails = () => {
     fetch(

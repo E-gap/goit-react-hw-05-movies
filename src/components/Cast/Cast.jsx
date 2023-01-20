@@ -18,10 +18,10 @@ const Cast = () => {
       });
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     searchMovieCredits();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); */
 
   const basic = 'https://image.tmdb.org/t/p/w500';
   const noPosterImg =

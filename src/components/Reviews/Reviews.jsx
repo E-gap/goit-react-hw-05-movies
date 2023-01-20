@@ -17,9 +17,9 @@ const Reviews = () => {
       });
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     searchMovieReviews();
-  }, []);
+  }, []); */
 
   return (
     <div>
