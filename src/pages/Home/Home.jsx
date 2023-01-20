@@ -1,4 +1,4 @@
-/* import css from './Home.module.css';
+import css from './Home.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -35,4 +35,4 @@ Home.propTypes = {
       name: PropTypes.string,
     })
   ),
-}; */
+};

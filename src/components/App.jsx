@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy } from 'react';
-//import Home from '../pages/Home/Home';
+import Home from '../pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout/Layout.jsx';
 import Movies from '../pages/Movies/Movies';
@@ -47,14 +47,14 @@ export const App = () => {
     >
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<Home movies={movies} />}></Route> */}
+          <Route index element={<Home movies={movies} />}></Route>
           <Route path="movies" element={<Movies />}></Route>
           <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />}></Route>
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
         </Route>
-        {/* <Route path="*" element={<Home movies={movies} />} /> */}
+        <Route path="*" element={<Home movies={movies} />} />
       </Routes>
     </div>
   );
