@@ -1,8 +1,8 @@
 import { useState, useEffect, lazy } from 'react';
-import Home from '../pages/Home/Home';
+import Home from '../pages/Home/Home.jsx';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './Layout/Layout';
-import Movies from '../pages/Movies/Movies';
+import Layout from './Layout/Layout.jsx';
+import Movies from '../pages/Movies/Movies.jsx';
 import { key } from '../services/data';
 
 const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
