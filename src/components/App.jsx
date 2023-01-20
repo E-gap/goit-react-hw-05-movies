@@ -45,7 +45,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home movies={movies} />}></Route>
           <Route path="movies" element={<Movies />}></Route>
@@ -55,7 +55,7 @@ export const App = () => {
           </Route>
         </Route>
         <Route path="*" element={<Home movies={movies} />} />
-      </Routes> */}
+      </Routes>
     </div>
   );
 };
