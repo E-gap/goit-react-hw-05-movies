@@ -12,7 +12,7 @@ const Cast = () => {
     searchMovieCredits();
   }, []);
 
-  const searchMovieCredits = id => {
+  const searchMovieCredits = () => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`
     )
