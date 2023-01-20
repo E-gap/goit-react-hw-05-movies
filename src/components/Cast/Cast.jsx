@@ -8,10 +8,6 @@ const Cast = () => {
   const [credits, setCredits] = useState([]);
   const { movieId } = useParams();
 
-  useEffect(() => {
-    searchMovieCredits();
-  }, []);
-
   const searchMovieCredits = () => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`
@@ -21,6 +17,11 @@ const Cast = () => {
         setCredits(resp.cast);
       });
   };
+
+  useEffect(() => {
+    searchMovieCredits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const basic = 'https://image.tmdb.org/t/p/w500';
   const noPosterImg =
