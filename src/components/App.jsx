@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy } from 'react';
 import Home from '../pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './Layout/Layout.jsx';
+import Layout from './Layout/Layout';
 import Movies from '../pages/Movies/Movies';
 import { key } from '../services/data';
 
@@ -45,7 +45,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home movies={movies} />}></Route>
           <Route path="movies" element={<Movies />}></Route>
@@ -55,7 +55,7 @@ export const App = () => {
           </Route>
         </Route>
         <Route path="*" element={<Home movies={movies} />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 };
