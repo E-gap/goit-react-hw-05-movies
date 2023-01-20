@@ -29,11 +29,11 @@ export const App = () => {
     }
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (movies.length === 0) {
       searchTrendingMovies();
     }
-  }, [movies]); */
+  }, [movies]);
 
   return (
     <div

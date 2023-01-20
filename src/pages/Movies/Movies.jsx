@@ -29,11 +29,11 @@ const Movies = () => {
     reset();
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (query !== null) {
       searchMovieQuery();
     }
-  }, [query]); */
+  }, [query]);
 
   const submitSearch = event => {
     event.preventDefault();
